@@ -1,10 +1,10 @@
-#!/usr/bin/env /home/ivanjoe/Projects/automatic_recommender/script/rails runner
 
 require 'rubygems'
 require 'json'
 require 'pp'
 require 'matrix'
 
+#!/usr/bin/env /home/ivanjoe/Projects/automatic_recommender/script/rails runner 
 require '/home/ivanjoe/Projects/automatic_recommender/lib/matrix_builder/users_array.rb'
 require '/home/ivanjoe/Projects/automatic_recommender/lib/matrix_builder/items_array.rb'
 
@@ -16,18 +16,19 @@ data = {
   'James bond' => [1 -> 5, 5,0,5],
   'Mr. No' => [1 -> 5,0,3,4],
   '3' => [1 -> 3,4,0,3],
-  '4' => [1 -> 0,0,5,3],
-  '5' => [1 -> 5,4,4,5],
   '6' => [1 -> 5,4,5,5],
 }
 =end
-def Array.key_by_value value
-  return catch :return do
-    self.each_with_index do |each, index|
-      throw(:return, index) if each == value
+class Array
+  def key_by_value value
+    return catch :return do
+      self.each_with_index do |each, index|
+        throw(:return, index) if each == value
+      end
     end
   end
 end
+
 # Create a user-item matrix with the appropriate number of rows and columns
 # Number of rows: number of items
 #item_array = Rating.select(:item_id).collect{|rating| rating.item_id}.uniq
@@ -37,27 +38,66 @@ rownum = Items_array.size
 colnum = Users_array.size
 # Create matrix with the counted dimensions, fill with 0s
 #user_item_matrix = Matrix.build(rownum, colnum){0}
-colnum.times.collect 
-# Fill in the item ratings
-
-=begin
-Users_array[0]
-  ratings_per_user = Rating.find_by_user_id(Users.array)
-  rating = ratings_per_user[0].item_id
-  row = Items_array.find_by_value(item_id)
-  Matrix(0,row) = rating
-=end
-Users_array.each_with_index do |user_id, column|  
-  ratings_per_user = Rating.find_all_by_user_id(user_id)
-  ratings_per_user.each do |rating|
-    row = Items_array.find_by_value(rating.item_id)
-    # error handling
-    user_item_matrix(row, column) = rating.rating
-  end
+if Items_array.size < Users_array.size
+  colnum = Items_array.size
+  rownum = Users_array.size
+else
+  rownum = Items_array.size
+  colnum = Users_array.size
 end
+user_item_array = colnum.times.collect{ rownum.times.collect {0} }
 
-pp user_item_matrix
+p "Number of rows:" + rownum.to_s
+p "Number of columns:" + colnum.to_s
 
+# Fill in the item ratings
+# If there are more less items than users then switch the rows and columns
+p "Array creation"
+p Time.now.to_s
+if Items_array.size > Users_array.size
+  Users_array.each_with_index do |user_id, column|  
+    ratings_per_user = Rating.find_all_by_user_id(user_id)
+    ratings_per_user.each do |rating|
+      row = Items_array.key_by_value(rating.item_id)
+      # error handling
+      user_item_array[column][row] = rating.rating
+    end
+  end
+else
+  Items_array.each_with_index do |item_id, column|  
+    ratings_per_item = Rating.find_all_by_item_id(item_id)
+    ratings_per_item.each do |rating|
+      row = Users_array.key_by_value(rating.user_id)
+      # error handling
+      user_item_array[column][row] = rating.rating
+    end
+  end  
+end
+p Time.now.to_s
+p "Array creation ended"
+
+# Test, make the array smaller
+# row numbers - items
+#user_item_array = user_item_array[0..10]
+
+# column numbers - users
+user_item_array.map!{|x| x[0..200]}
+
+#p user_item_array.to_json
+
+json = user_item_array.to_json
+
+target = "user_item_array.json"
+
+File.open(target, "w") do |f|
+  f.write(json)
+end
+p "Counting.."
+p Time.now.to_s
+out = JSON.parse(%x|java -jar #{File.dirname(__FILE__)}/../java/recommender.jar #{target}|)
+#pp out
+p Time.now.to_s
+p "Finished"
 #pp rownum
 #pp colnum
 #pp user_item_matrix
