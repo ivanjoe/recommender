@@ -1,4 +1,6 @@
 AutomaticRecommender::Application.routes.draw do
+  get "graph/show"
+
   resources :ratings
 
   # The priority is based upon order of creation:

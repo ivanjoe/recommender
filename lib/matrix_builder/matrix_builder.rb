@@ -38,23 +38,30 @@ rownum = Items_array.size
 colnum = Users_array.size
 # Create matrix with the counted dimensions, fill with 0s
 #user_item_matrix = Matrix.build(rownum, colnum){0}
+# Number of columns should be smaller than number of rows
 if Items_array.size < Users_array.size
   colnum = Items_array.size
   rownum = Users_array.size
+
+  colname = "items"
+  rowname = "users"
 else
   rownum = Items_array.size
   colnum = Users_array.size
+
+  colname = "users"
+  rowname = "items"
 end
 user_item_array = colnum.times.collect{ rownum.times.collect {0} }
 
-p "Number of rows:" + rownum.to_s
-p "Number of columns:" + colnum.to_s
+p "Number of rows:" + rownum.to_s + "(" + rowname + ")"
+p "Number of columns:" + colnum.to_s + "(" + colname + ")"
 
 # Fill in the item ratings
-# If there are more less items than users then switch the rows and columns
+# If there are more items than users then switch the rows and columns
 p "Array creation"
 p Time.now.to_s
-if Items_array.size > Users_array.size
+if Items_array.size < Users_array.size
   Users_array.each_with_index do |user_id, column|  
     ratings_per_user = Rating.find_all_by_user_id(user_id)
     ratings_per_user.each do |rating|
@@ -63,7 +70,7 @@ if Items_array.size > Users_array.size
       user_item_array[column][row] = rating.rating
     end
   end
-else
+else # This is now our case
   Items_array.each_with_index do |item_id, column|  
     ratings_per_item = Rating.find_all_by_item_id(item_id)
     ratings_per_item.each do |rating|
@@ -77,12 +84,12 @@ p Time.now.to_s
 p "Array creation ended"
 
 # Test, make the array smaller
-# row numbers - items
-#user_item_array = user_item_array[0..10]
+# column numbers - items
+user_item_array = user_item_array[0..20]
 
-# column numbers - users
-user_item_array.map!{|x| x[0..200]}
-
+# colnumbers - users
+user_item_array.map!{|x| x[0..19]}
+p "User-Item matrix colnum:" + user_item_array.size.to_s
 #p user_item_array.to_json
 
 json = user_item_array.to_json
@@ -95,6 +102,12 @@ end
 p "Counting.."
 p Time.now.to_s
 out = JSON.parse(%x|java -jar #{File.dirname(__FILE__)}/../java/recommender.jar #{target}|)
+
+target = "calculated_matrices.json"
+File.open(target, "w") do |f|
+  f.write(out)
+end
+
 #pp out
 p Time.now.to_s
 p "Finished"
@@ -109,9 +122,9 @@ p "Finished"
 def similar user
   out = JSON.parse(%x|java -jar #{File.dirname(__FILE__)}/recommender.jar #{FILE_IN}|)
 
-  u = Matrix[*out[1]]
+  u = Matrix[*out[1]] #rows
   s = Matrix[*out[0]]
-  vt = Matrix[*out[2]]
+  vt = Matrix[*out[2]] #columns
 
   #pp u.column(0)
   u_collapsed  = Matrix.columns([u.column(0),u.column(1)])   # Items
