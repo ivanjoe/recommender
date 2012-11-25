@@ -1,4 +1,4 @@
-<h1>Graph#show</h1>
+<h1>Showing the distribution of the users and items</h1>
 <p>Find me in app/views/graph/show.html.erb</p>
 
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -11,8 +11,7 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable(
-          <%= @json.to_json %>
-        );
+          <%= raw @json.to_json %>);
         /*var data = google.visualization.DataTable();
         data.addColumn('number', 'X');
         data.addColumn('number', 'Users');

@@ -5,12 +5,15 @@ class GraphController < ApplicationController
     calculated_matrices = JSON.parse(json_matrices)
 
     #head
-    head = [[:X, :Rows, :Columns]]
+    head = [["X", "Row", "Column", "Actual user"]]
     #rows
-    rows = calculated_matrices[1].map{|x| [x[0], x[1], nil]}
+    rows = calculated_matrices[1].map{|x| [x[0], x[1], nil, nil]}
     #columns
-    columns = calculated_matrices[2].map{|y| [y[0],nil,y[1]] }
+    columns = calculated_matrices[2].map{|y| [y[0],nil,y[1], nil] }
 
-    @json = (head + rows + columns)   
+    #user
+    actual = [[0.6, nil, nil, 0.5]]
+
+    @json = (head + rows + columns+actual)   
   end
 end
