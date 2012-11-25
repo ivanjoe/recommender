@@ -21,8 +21,8 @@
 
         var options = {
           title: 'Users vs. Ratings comparison',
-          hAxis: {title: 'X', minValue: 0, maxValue: 0.6},
-          vAxis: {title: 'Y', minValue: -0.3, maxValue: 0.9},
+                 hAxis: {title: 'X', minValue: <%= @x_min %>, maxValue: <%= @x_max %>},
+                 vAxis: {title: 'Y', minValue: <%= @y_min %>, maxValue: <%= @y_max %>},
           legend: 'true'
         };
 
