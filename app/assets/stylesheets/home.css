@@ -1,3 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
 body {
   padding-top: 60px;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 20px;
 }
+div.video {
+  border: 2px #DDDDDD solid;
+  display: block;
+  height: 300px;
+  width: 400px;
+}
+
