@@ -1,7 +1,21 @@
 <% provide(:title, 'Home') %>
 <h1>Automatic Recommender for a Web based social learnig application</h1>
-<div class="content">
+<div class="row">
+  <div class="span9">
+  </div>
+  <div class="span3">
+    <h2>Recommendations</h2>
+    <div class="recommendation-list">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+    <h2>Visualisation</h2>
+    <div>
+      <%= link_to "Preprocessed User-Item matrix", graph_show_path %>
+      <%= link_to "Processed matrix with the new user", graph_show_path(:user => "1") %>
+    </div>
+  </div>
 </div>
-<div class="sidebar">
-</div>
-
