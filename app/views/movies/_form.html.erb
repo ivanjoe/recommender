@@ -1,0 +1,146 @@
+<%= form_for @movie, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :movie_title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :movie_title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :release_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :release_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :video_release_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :video_release_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :imdb_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :imdb_url, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :unknown, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :unknown, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :action, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :action, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :adventure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :adventure, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :animation, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :children, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :children, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comedy, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :comedy, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :crime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :crime, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :documentary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :documentary, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :drama, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :drama, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :fantasy, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :fantasy, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :film_noir, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :film_noir, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :horror, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :horror, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :musical, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :musical, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :mystery, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :mystery, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :romance, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :romance, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sci_fi, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :sci_fi, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :thriller, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :thriller, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :war, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :war, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :western, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :western, :class => 'check_box' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                movies_path, :class => 'btn' %>
+  </div>
+<% end %>

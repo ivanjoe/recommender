@@ -1,13 +1,27 @@
 <% provide(:title, 'Home') %>
 <h1>Automatic Recommender for a Web based social learning application</h1>
 <div class="row">
-  <div class="span9">
+  <div class="span8">
     <div class="video">
+      <i class="icon-play" style="font-size: 80px; padding-left: 200px; line-height: 300px;"></i>
     </div>
-    <div class="ratings">
+    <div class="span8">
+      <form class="form-inline">
+        <fieldset>
+          <legend>Rating</legend>
+          <!--<i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>-->
+          <input type="text" class=""/>
+          <button type="submit" class="btn">Submit</button>
+          <span class="help-block">Give your rating for this item</span>
+        </fieldset>
+      </form>
     </div>
   </div>
-  <div class="span3">
+  <div class="span4">
     <h2>Recommendations</h2>
     <div class="recommendation-list">
       <ul>
@@ -18,8 +32,12 @@
     </div>
     <h2>Visualisation</h2>
     <div>
-      <%= link_to "Preprocessed User-Item matrix", graph_show_path %>
-      <%= link_to "Processed matrix with the new user", graph_show_path(:user => "1") %>
+      <p>
+        <%= link_to "Preprocessed User-Item matrix", graph_show_path %>
+      </p>
+      <p>
+        <%= link_to "Processed matrix with the new user", graph_show_path(:user => "1") %>
+      </p>
     </div>
   </div>
 </div>

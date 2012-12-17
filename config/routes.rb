@@ -1,4 +1,6 @@
 AutomaticRecommender::Application.routes.draw do
+  resources :movies
+
   get "static_pages/about"
   get "static_pages/contact"
 

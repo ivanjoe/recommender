@@ -1,0 +1,65 @@
+<%- model_class = Movie -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:movie_title) %>:</strong></dt>
+  <dd><%= @movie.movie_title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:release_date) %>:</strong></dt>
+  <dd><%= @movie.release_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:video_release_date) %>:</strong></dt>
+  <dd><%= @movie.video_release_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:imdb_url) %>:</strong></dt>
+  <dd><%= @movie.imdb_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:unknown) %>:</strong></dt>
+  <dd><%= @movie.unknown %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:action) %>:</strong></dt>
+  <dd><%= @movie.action %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:adventure) %>:</strong></dt>
+  <dd><%= @movie.adventure %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:animation) %>:</strong></dt>
+  <dd><%= @movie.animation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:children) %>:</strong></dt>
+  <dd><%= @movie.children %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comedy) %>:</strong></dt>
+  <dd><%= @movie.comedy %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:crime) %>:</strong></dt>
+  <dd><%= @movie.crime %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:documentary) %>:</strong></dt>
+  <dd><%= @movie.documentary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:drama) %>:</strong></dt>
+  <dd><%= @movie.drama %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fantasy) %>:</strong></dt>
+  <dd><%= @movie.fantasy %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:film_noir) %>:</strong></dt>
+  <dd><%= @movie.film_noir %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:horror) %>:</strong></dt>
+  <dd><%= @movie.horror %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:musical) %>:</strong></dt>
+  <dd><%= @movie.musical %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mystery) %>:</strong></dt>
+  <dd><%= @movie.mystery %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:romance) %>:</strong></dt>
+  <dd><%= @movie.romance %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sci_fi) %>:</strong></dt>
+  <dd><%= @movie.sci_fi %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:thriller) %>:</strong></dt>
+  <dd><%= @movie.thriller %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:war) %>:</strong></dt>
+  <dd><%= @movie.war %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:western) %>:</strong></dt>
+  <dd><%= @movie.western %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              movies_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_movie_path(@movie), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              movie_path(@movie),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

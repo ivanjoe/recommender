@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  movie_title: MyString
+  release_date: 2012-12-17
+  video_release_date: 2012-12-17
+  imdb_url: MyString
+  unknown: MyString
+  action: false
+  adventure: false
+  animation: false
+  children: false
+  comedy: false
+  crime: false
+  documentary: false
+  drama: false
+  fantasy: false
+  film_noir: false
+  horror: false
+  musical: false
+  mystery: false
+  romance: false
+  sci_fi: false
+  thriller: false
+  war: false
+  western: false
+
+two:
+  movie_title: MyString
+  release_date: 2012-12-17
+  video_release_date: 2012-12-17
+  imdb_url: MyString
+  unknown: MyString
+  action: false
+  adventure: false
+  animation: false
+  children: false
+  comedy: false
+  crime: false
+  documentary: false
+  drama: false
+  fantasy: false
+  film_noir: false
+  horror: false
+  musical: false
+  mystery: false
+  romance: false
+  sci_fi: false
+  thriller: false
+  war: false
+  western: false
