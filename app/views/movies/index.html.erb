@@ -2,33 +2,15 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+<%= will_paginate %>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:movie_title) %></th>
       <th><%= model_class.human_attribute_name(:release_date) %></th>
-      <th><%= model_class.human_attribute_name(:video_release_date) %></th>
       <th><%= model_class.human_attribute_name(:imdb_url) %></th>
-      <th><%= model_class.human_attribute_name(:unknown) %></th>
-      <th><%= model_class.human_attribute_name(:action) %></th>
-      <th><%= model_class.human_attribute_name(:adventure) %></th>
-      <th><%= model_class.human_attribute_name(:animation) %></th>
-      <th><%= model_class.human_attribute_name(:children) %></th>
-      <th><%= model_class.human_attribute_name(:comedy) %></th>
-      <th><%= model_class.human_attribute_name(:crime) %></th>
-      <th><%= model_class.human_attribute_name(:documentary) %></th>
-      <th><%= model_class.human_attribute_name(:drama) %></th>
-      <th><%= model_class.human_attribute_name(:fantasy) %></th>
-      <th><%= model_class.human_attribute_name(:film_noir) %></th>
-      <th><%= model_class.human_attribute_name(:horror) %></th>
-      <th><%= model_class.human_attribute_name(:musical) %></th>
-      <th><%= model_class.human_attribute_name(:mystery) %></th>
-      <th><%= model_class.human_attribute_name(:romance) %></th>
-      <th><%= model_class.human_attribute_name(:sci_fi) %></th>
-      <th><%= model_class.human_attribute_name(:thriller) %></th>
-      <th><%= model_class.human_attribute_name(:war) %></th>
-      <th><%= model_class.human_attribute_name(:western) %></th>
+      <th>Genres:</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -39,27 +21,62 @@
         <td><%= link_to movie.id, movie_path(movie) %></td>
         <td><%= movie.movie_title %></td>
         <td><%= movie.release_date %></td>
-        <td><%= movie.video_release_date %></td>
-        <td><%= movie.imdb_url %></td>
-        <td><%= movie.unknown %></td>
-        <td><%= movie.action %></td>
-        <td><%= movie.adventure %></td>
-        <td><%= movie.animation %></td>
-        <td><%= movie.children %></td>
-        <td><%= movie.comedy %></td>
-        <td><%= movie.crime %></td>
-        <td><%= movie.documentary %></td>
-        <td><%= movie.drama %></td>
-        <td><%= movie.fantasy %></td>
-        <td><%= movie.film_noir %></td>
-        <td><%= movie.horror %></td>
-        <td><%= movie.musical %></td>
-        <td><%= movie.mystery %></td>
-        <td><%= movie.romance %></td>
-        <td><%= movie.sci_fi %></td>
-        <td><%= movie.thriller %></td>
-        <td><%= movie.war %></td>
-        <td><%= movie.western %></td>
+        <td><%= link_to movie.movie_title, movie.imdb_url, {:target => :_blank} %></td>
+        <td>
+          <% if movie.action? %>
+            <span class="label"><%= model_class.human_attribute_name(:action) %></span>
+          <% end %>
+          <% if movie.adventure%>
+            <span class="label"><%= model_class.human_attribute_name(:adventure) %></span>
+          <% end %>
+          <% if movie.animation%>
+            <span class="label"><%= model_class.human_attribute_name(:animation) %></span>
+          <% end %>
+          <% if movie.children%>
+            <span class="label"><%= model_class.human_attribute_name(:children) %></span>
+          <% end %>
+          <% if movie.comedy%>
+            <span class="label"><%= model_class.human_attribute_name(:comedy) %></span>
+          <% end %>
+          <% if movie.crime%>
+            <span class="label"><%= model_class.human_attribute_name(:crime) %></span>
+          <% end %>
+          <% if movie.documentary%>
+            <span class="label"><%= model_class.human_attribute_name(:documentary) %></span>
+          <% end %>
+          <% if movie.drama%>
+            <span class="label"><%= model_class.human_attribute_name(:drama) %></span>
+          <% end %>
+          <% if movie.fantasy%>
+            <span class="label"><%= model_class.human_attribute_name(:fantasy) %></span>
+          <% end %>
+          <% if movie.film_noir%>
+            <span class="label"><%= model_class.human_attribute_name(:film_noir) %></span>
+          <% end %>
+          <% if movie.horror%>
+            <span class="label"><%= model_class.human_attribute_name(:horror) %></span>
+          <% end %>
+          <% if movie.musical%>
+            <span class="label"><%= model_class.human_attribute_name(:musical) %></span>
+          <% end %>
+          <% if movie.mystery%>
+            <span class="label"><%= model_class.human_attribute_name(:mystery) %></span>
+          <% end %>
+          <% if movie.romance%>
+            <span class="label"><%= model_class.human_attribute_name(:romance) %></span>
+          <% end %>
+          <% if movie.sci_fi%>
+            <span class="label"><%= model_class.human_attribute_name(:sci_fi) %></span>
+          <% end %>
+          <% if movie.thriller%>
+            <span class="label"><%= model_class.human_attribute_name(:thriller) %></span>
+          <% end %>
+          <% if movie.war%>
+            <span class="label"><%= model_class.human_attribute_name(:war) %></span>
+          <% end %>
+          <% if movie.western%>
+            <span class="label"><%= model_class.human_attribute_name(:western) %></span>
+          <% end %></td>
         <td><%=l movie.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -74,7 +91,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_movie_path,
             :class => 'btn btn-primary' %>

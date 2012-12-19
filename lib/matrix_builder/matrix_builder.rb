@@ -61,22 +61,23 @@ p "Number of columns:" + colnum.to_s + "(" + colname + ")"
 # If there are more items than users then switch the rows and columns
 p "Array creation"
 p Time.now.to_s
+
 if Items_array.size < Users_array.size
-  Users_array.each_with_index do |user_id, column|  
+  Users_array.each_with_index do |user_id, row|  
     ratings_per_user = Rating.find_all_by_user_id(user_id)
     ratings_per_user.each do |rating|
-      row = Items_array.key_by_value(rating.item_id)
+      column = Items_array.key_by_value(rating.item_id)
       # error handling
-      user_item_array[column][row] = rating.rating
+      user_item_array[row][column] = rating.rating
     end
   end
 else # This is now our case
-  Items_array.each_with_index do |item_id, column|  
+  Items_array.each_with_index do |item_id, row|  
     ratings_per_item = Rating.find_all_by_item_id(item_id)
     ratings_per_item.each do |rating|
-      row = Users_array.key_by_value(rating.user_id)
+      column = Users_array.key_by_value(rating.user_id)
       # error handling
-      user_item_array[column][row] = rating.rating
+      user_item_array[row][column] = rating.rating
     end
   end  
 end
@@ -84,7 +85,7 @@ p Time.now.to_s
 p "Array creation ended"
 
 # Test, make the array smaller
-# column numbers - items
+# row numbers - items
 user_item_array = user_item_array[0..20]
 
 # colnumbers - users

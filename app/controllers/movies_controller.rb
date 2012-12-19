@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -8,48 +8,65 @@
   <dd><%= @movie.movie_title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:release_date) %>:</strong></dt>
   <dd><%= @movie.release_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:video_release_date) %>:</strong></dt>
-  <dd><%= @movie.video_release_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:imdb_url) %>:</strong></dt>
   <dd><%= @movie.imdb_url %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unknown) %>:</strong></dt>
-  <dd><%= @movie.unknown %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:action) %>:</strong></dt>
-  <dd><%= @movie.action %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:adventure) %>:</strong></dt>
-  <dd><%= @movie.adventure %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animation) %>:</strong></dt>
-  <dd><%= @movie.animation %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:children) %>:</strong></dt>
-  <dd><%= @movie.children %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:comedy) %>:</strong></dt>
-  <dd><%= @movie.comedy %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:crime) %>:</strong></dt>
-  <dd><%= @movie.crime %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:documentary) %>:</strong></dt>
-  <dd><%= @movie.documentary %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drama) %>:</strong></dt>
-  <dd><%= @movie.drama %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fantasy) %>:</strong></dt>
-  <dd><%= @movie.fantasy %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:film_noir) %>:</strong></dt>
-  <dd><%= @movie.film_noir %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:horror) %>:</strong></dt>
-  <dd><%= @movie.horror %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:musical) %>:</strong></dt>
-  <dd><%= @movie.musical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:mystery) %>:</strong></dt>
-  <dd><%= @movie.mystery %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:romance) %>:</strong></dt>
-  <dd><%= @movie.romance %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sci_fi) %>:</strong></dt>
-  <dd><%= @movie.sci_fi %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:thriller) %>:</strong></dt>
-  <dd><%= @movie.thriller %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:war) %>:</strong></dt>
-  <dd><%= @movie.war %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:western) %>:</strong></dt>
-  <dd><%= @movie.western %></dd>
+  <dt><strong><%= 'Genres' %>:</strong></dt>
+  <dd>
+    <% if @movie.action? %>
+      <span class="label"><%= model_class.human_attribute_name(:action) %></span>
+    <% end %>
+    <% if @movie.adventure%>
+      <span class="label"><%= model_class.human_attribute_name(:adventure) %></span>
+    <% end %>
+    <% if @movie.animation%>
+      <span class="label"><%= model_class.human_attribute_name(:animation) %></span>
+    <% end %>
+    <% if @movie.children%>
+      <span class="label"><%= model_class.human_attribute_name(:children) %></span>
+    <% end %>
+    <% if @movie.comedy%>
+      <span class="label"><%= model_class.human_attribute_name(:comedy) %></span>
+    <% end %>
+    <% if @movie.crime%>
+      <span class="label"><%= model_class.human_attribute_name(:crime) %></span>
+    <% end %>
+    <% if @movie.documentary%>
+      <span class="label"><%= model_class.human_attribute_name(:documentary) %></span>
+    <% end %>
+    <% if @movie.drama%>
+      <span class="label"><%= model_class.human_attribute_name(:drama) %></span>
+    <% end %>
+    <% if @movie.fantasy%>
+      <span class="label"><%= model_class.human_attribute_name(:fantasy) %></span>
+    <% end %>
+    <% if @movie.film_noir%>
+      <span class="label"><%= model_class.human_attribute_name(:film_noir) %></span>
+    <% end %>
+    <% if @movie.horror%>
+      <span class="label"><%= model_class.human_attribute_name(:horror) %></span>
+    <% end %>
+    <% if @movie.musical%>
+      <span class="label"><%= model_class.human_attribute_name(:musical) %></span>
+    <% end %>
+    <% if @movie.mystery%>
+      <span class="label"><%= model_class.human_attribute_name(:mystery) %></span>
+    <% end %>
+    <% if @movie.romance%>
+      <span class="label"><%= model_class.human_attribute_name(:romance) %></span>
+    <% end %>
+    <% if @movie.sci_fi%>
+      <span class="label"><%= model_class.human_attribute_name(:sci_fi) %></span>
+    <% end %>
+    <% if @movie.thriller%>
+      <span class="label"><%= model_class.human_attribute_name(:thriller) %></span>
+    <% end %>
+    <% if @movie.war%>
+      <span class="label"><%= model_class.human_attribute_name(:war) %></span>
+    <% end %>
+    <% if @movie.western%>
+      <span class="label"><%= model_class.human_attribute_name(:western) %></span>
+    <% end %>
+  </dd>
 </dl>
 
 <div class="form-actions">

@@ -5,20 +5,28 @@
     <div class="video">
       <i class="icon-play" style="font-size: 80px; padding-left: 200px; line-height: 300px;"></i>
     </div>
-    <div class="span8">
-      <form class="form-inline">
-        <fieldset>
-          <legend>Rating</legend>
-          <!--<i class="icon-star-empty"></i>
-          <i class="icon-star-empty"></i>
-          <i class="icon-star-empty"></i>
-          <i class="icon-star-empty"></i>
-          <i class="icon-star-empty"></i>-->
-          <input type="text" class=""/>
-          <button type="submit" class="btn">Submit</button>
-          <span class="help-block">Give your rating for this item</span>
-        </fieldset>
-      </form>
+    <div class="row">
+      <div class="span8">
+        <%= form_tag '/graph/show' do -%>
+          <fieldset>
+            <legend>Rating</legend>
+            <div class="row">
+              <div class="span3">
+                <h4><%= Movie.human_attribute_name(:movie_title) %></h4>
+              </div>
+              <div class="span3">
+                <h4>Genres:</h4>
+              </div>
+              <div class="span2">
+                <h4><%= Rating.model_name.human %></h4>
+              </div>
+            </div>
+            <%= render @movies %>
+            <%= submit_tag 'Submit', {:class => "btn" } %>
+            <span class="help-block">Rate some of the movies</span>
+          </fieldset>
+        <% end -%>
+      </div>
     </div>
   </div>
   <div class="span4">

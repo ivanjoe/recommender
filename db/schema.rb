@@ -11,14 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217100004) do
+ActiveRecord::Schema.define(:version => 20121217133407) do
 
   create_table "movies", :force => true do |t|
     t.string   "movie_title"
     t.date     "release_date"
-    t.date     "video_release_date"
     t.string   "imdb_url"
-    t.string   "unknown"
     t.boolean  "action"
     t.boolean  "adventure"
     t.boolean  "animation"
@@ -37,8 +35,9 @@ ActiveRecord::Schema.define(:version => 20121217100004) do
     t.boolean  "thriller"
     t.boolean  "war"
     t.boolean  "western"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "movie_id"
   end
 
   create_table "ratings", :force => true do |t|

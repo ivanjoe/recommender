@@ -1,0 +1,63 @@
+<div class="row"> 
+  <div class="span3"><%= link_to movie.movie_title, movie_path(movie) %></div>       
+  <div class="span3">
+    <% if movie.action? %>
+      <span class="label"><%= Movie.human_attribute_name(:action) %></span>
+    <% end %>
+    <% if movie.adventure%>
+      <span class="label"><%= Movie.human_attribute_name(:adventure) %></span>
+    <% end %>
+    <% if movie.animation%>
+      <span class="label"><%= Movie.human_attribute_name(:animation) %></span>
+    <% end %>
+    <% if movie.children%>
+      <span class="label"><%= Movie.human_attribute_name(:children) %></span>
+    <% end %>
+    <% if movie.comedy%>
+      <span class="label"><%= Movie.human_attribute_name(:comedy) %></span>
+    <% end %>
+    <% if movie.crime%>
+      <span class="label"><%= Movie.human_attribute_name(:crime) %></span>
+    <% end %>
+    <% if movie.documentary%>
+      <span class="label"><%= Movie.human_attribute_name(:documentary) %></span>
+    <% end %>
+    <% if movie.drama%>
+      <span class="label"><%= Movie.human_attribute_name(:drama) %></span>
+    <% end %>
+    <% if movie.fantasy%>
+      <span class="label"><%= Movie.human_attribute_name(:fantasy) %></span>
+    <% end %>
+    <% if movie.film_noir%>
+      <span class="label"><%= Movie.human_attribute_name(:film_noir) %></span>
+    <% end %>
+    <% if movie.horror%>
+      <span class="label"><%= Movie.human_attribute_name(:horror) %></span>
+    <% end %>
+    <% if movie.musical%>
+      <span class="label"><%= Movie.human_attribute_name(:musical) %></span>
+    <% end %>
+    <% if movie.mystery%>
+      <span class="label"><%= Movie.human_attribute_name(:mystery) %></span>
+    <% end %>
+    <% if movie.romance%>
+      <span class="label"><%= Movie.human_attribute_name(:romance) %></span>
+    <% end %>
+    <% if movie.sci_fi%>
+      <span class="label"><%= Movie.human_attribute_name(:sci_fi) %></span>
+    <% end %>
+    <% if movie.thriller%>
+      <span class="label"><%= Movie.human_attribute_name(:thriller) %></span>
+    <% end %>
+    <% if movie.war%>
+      <span class="label"><%= Movie.human_attribute_name(:war) %></span>
+    <% end %>
+    <% if movie.western%>
+      <span class="label"><%= Movie.human_attribute_name(:western) %></span>
+    <% end %>
+  
+  </div>       
+  <div class="span2">
+    <%= text_field_tag 'r_' + movie.id.to_s, '0', { :class => 'input-mini' } %>
+  </div>
+</div>
