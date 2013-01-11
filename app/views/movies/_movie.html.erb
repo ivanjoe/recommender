@@ -58,6 +58,6 @@
   
   </div>       
   <div class="span2">
-    <%= text_field_tag 'r_' + movie.id.to_s, '0', { :class => 'input-mini' } %>
+    <%= text_field_tag 'ratings[' + movie.id.to_s + ']', '0', { :class => 'input-mini' } %>
   </div>
 </div>

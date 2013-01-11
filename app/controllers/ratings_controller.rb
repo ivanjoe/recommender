@@ -80,4 +80,19 @@ class RatingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /ratings/many
+  def many
+    user_id = 2000
+    ratings = params[:ratings]
+    ratings.each_with_index do |rating, item_id|
+      save_or_update user_id, item_id, rating
+    end
+    # redirects to the graph/user page
+    @rating 
+  end
+
+  # saves the rating for the user
+  def save_or_update user_id, item_id, rating
+  end
 end
