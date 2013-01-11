@@ -5,8 +5,8 @@ require 'pp'
 require 'matrix'
 
 #!/usr/bin/env /home/ivanjoe/Projects/automatic_recommender/script/rails runner 
-require '/home/ivanjoe/Projects/automatic_recommender/lib/matrix_builder/users_array.rb'
-require '/home/ivanjoe/Projects/automatic_recommender/lib/matrix_builder/items_array.rb'
+require 'users_array.rb'
+require 'items_array.rb'
 
 # Data has to come in matrix format
 # Columns are representing the users
