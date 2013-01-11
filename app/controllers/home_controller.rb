@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    require '/home/ivanjoe/Projects/automatic_recommender/lib/matrix_builder/items_array.rb'
+    require Rails.root.to_s + '/lib/matrix_builder/items_array.rb'
 
     @movies = Array.new
     Items_array.each_with_index do |item, index|
