@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="span8">
-        <%= form_tag '/ratings/many' do -%>
+        <%= form_tag '/home/submit' do -%>
           <fieldset>
             <legend>Rating</legend>
             <div class="row">
@@ -44,7 +44,7 @@
         <%= link_to "Preprocessed User-Item matrix", graph_show_path %>
       </p>
       <p>
-        <%= link_to "Processed matrix with the new user", graph_show_path(:user => "1") %>
+        <%= link_to "Processed matrix with the new user", graph_user_path %>
       </p>
     </div>
   </div>

@@ -1,9 +1,9 @@
 class GraphController < ApplicationController
-  def show
-    do_something para
+  def show x = nil, y = nil
+    calculate_graph x, y 
   end
 
-  def do_something x, y
+  def calculate_graph x, y
     json_matrices = File.read(File.dirname(__FILE__) + "/../../calculated_matrices.json")
 
     calculated_matrices = JSON.parse(json_matrices)
@@ -15,7 +15,8 @@ class GraphController < ApplicationController
     y_min = nil
     y_max = nil
 
-    if params[:user_x].present? && params[:user_y].present?
+    #if params[:user_x].present? && params[:user_y].present?
+    if (x!= nil && y != nil)
       #head
       head = [["X", "Users", "Actual user"]]
       #rows
@@ -64,7 +65,7 @@ class GraphController < ApplicationController
       end
 
       #user
-      actual = [[params[:user_x].to_f, nil, params[:user_y].to_f]]
+      actual = [[x, nil, y]]
 
       if x_min > actual[0][0]
         x_min = actual[0][0]
@@ -89,7 +90,7 @@ class GraphController < ApplicationController
       @y_max = y_max
     else
       #head
-      head = [["X", "Row", "Column"]]
+      head = [["X", "Movies", "Users"]]
       #rows
       #rows = calculated_matrices[1].map{|x| [x[0], x[1], nil]}
       calculated_matrices[1].each do |x|
@@ -142,21 +143,19 @@ class GraphController < ApplicationController
     end
   end
 
-  def calculate_position
-    # save the ratings
-    # ?save many method
-    # 
+  def user 
     require "./lib/matrix_builder/items_array.rb"
 
     ratings = []
     Items_array.each_with_index do |movie_id, index|
-      rating = params['r_' + movie_id.to_s]
-      ratings.push(rating.to_f)
+      rating = Rating.find_by_user_id_and_item_id 1000, movie_id
+      ratings.push(rating.rating)
       break if index == 20
     end
     
     coordinates = Rating.find_position ratings
-    do_something x, y
-    render 'show'
+    calculate_graph coordinates[0][0], coordinates[0][1]
+    render 'show' 
   end
+
 end

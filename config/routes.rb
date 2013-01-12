@@ -5,7 +5,8 @@ AutomaticRecommender::Application.routes.draw do
   get "static_pages/contact"
 
   get "graph/show"
-  post "ratings/many" 
+  get "graph/user"
+  post "home/submit" 
 
   resources :ratings
 

@@ -27,5 +27,4 @@ class Rating < ActiveRecord::Base
     position.to_a    
   end
 
-
 end
