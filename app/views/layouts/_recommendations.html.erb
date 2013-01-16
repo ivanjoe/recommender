@@ -1,0 +1,11 @@
+<% @recommendations.each do |k, recommendation| 
+  movie = Movie.find_by_movie_id recommendation[:movie_id].to_i %>
+  <div class="well">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to movie.movie_title, movie_path(movie) %>
+      </h4>
+      <p>because <span class="text-success"><%= number_to_percentage recommendation[:similarity]*100 %></span> similarity with user (ID): <%= recommendation[:user_id] %></p>
+    </div>
+  </div>
+<% end %>

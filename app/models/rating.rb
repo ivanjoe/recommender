@@ -27,4 +27,28 @@ class Rating < ActiveRecord::Base
     position.to_a    
   end
 
+  def self.find_nearest_neighbours x,y
+    json_matrices = File.read(Rails.root.to_s + "/calculated_matrices.json")
+    
+    calculated_matrices = JSON.parse(json_matrices)
+
+    users2 = calculated_matrices[2].map!{|x| x[0..1]}
+    
+    result = {}
+    count = 0
+    # Cosine similarity
+    users2.each do |u|
+      dot_product = ((u[0] * x) + (u[1] * y))
+      magnitude = (Math.sqrt(u[0]**2 + u[1]**2) * Math.sqrt(x**2 + y**2))
+
+      similarity = (dot_product / magnitude)
+
+      result[count] = similarity
+      count += 1
+    end
+
+    ordered = result.sort_by{|index, similarity| similarity }
+    ordered.reverse!
+  end
+
 end
