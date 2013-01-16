@@ -1,5 +1,5 @@
 #user id | item id | rating | timestamp
-lines = File.readlines('/home/ivanjoe/Projects/automatic_recommender/lib/parser/ratings_data/u_utf8.item')
+lines = File.readlines(Rails.root.to_s + '/lib/parser/ratings_data/u_utf8.item')
 movies = lines.map do |line|
   line.strip.split(/\|/).map{|s| s.to_s}
 end
