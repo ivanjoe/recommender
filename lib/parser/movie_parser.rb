@@ -34,3 +34,4 @@ movies.each do |row|
   m.western = false_true[row[23].to_i]
   m.save!
 end
+#heroku run 'rails runner lib/parser/movie_parser.rb'
