@@ -1,6 +1,5 @@
 <% provide(:title, 'Ratings matrix') %>
-<h1>Showing the distribution of the users and items</h1>
-<p>Find me in app/views/graph/show.html.erb</p>
+<h1>Graph to visualize the position of users</h1>
 
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -21,7 +20,7 @@
         data.add*/
 
         var options = {
-          title: 'Users vs. Ratings comparison',
+          title: '2 dimensional plotting',
                  hAxis: {title: 'X', minValue: <%= @x_min %>, maxValue: <%= @x_max %>},
                  vAxis: {title: 'Y', minValue: <%= @y_min %>, maxValue: <%= @y_max %>},
           legend: 'true'
